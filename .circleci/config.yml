@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: cimg/go:1.15
+    steps:
+      - run:
+          name: Test go get
+          command: |
+            go get github.com/DeNA/unity-meta-check
+      - checkout
+      - run:
+          name: Test
+          command: unity-meta-check
