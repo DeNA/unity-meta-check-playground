@@ -5,7 +5,7 @@ jobs:
   unity-meta-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # NOTE: Test no arguments for push
       - uses: DeNA/unity-meta-check@v3.1.4
 

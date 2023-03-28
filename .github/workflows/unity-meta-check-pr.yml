@@ -5,12 +5,12 @@ jobs:
   unity-meta-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # NOTE: Test no arguments for pull_request
-      - uses: DeNA/unity-meta-check@3.1.4
+      - uses: DeNA/unity-meta-check@v3.1.4
 
       # NOTE: Test full features
-      - uses: DeNA/unity-meta-check@3.1.4
+      - uses: DeNA/unity-meta-check@v3.1.4
         with:
           target_path: ./Directory
           log_level: DEBUG
