@@ -12,6 +12,7 @@ jobs:
       # NOTE: Test pr_comment for push
       - uses: jwalton/gh-find-current-pr@v1
         id: findPr
+        if: always()
 
       - uses: DeNA/unity-meta-check@v3.1.3
         with:
