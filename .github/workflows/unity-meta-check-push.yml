@@ -7,14 +7,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       # NOTE: Test no arguments for push
-      - uses: DeNA/unity-meta-check@v3.1.4-alpha0
+      - uses: DeNA/unity-meta-check@v3.1.4
 
       # NOTE: Test pr_comment for push
       - uses: jwalton/gh-find-current-pr@v1
         id: findPr
         if: always()
 
-      - uses: DeNA/unity-meta-check@v3.1.4-alpha0
+      - uses: DeNA/unity-meta-check@v3.1.4
         with:
           target_path: ./Directory
           log_level: DEBUG
