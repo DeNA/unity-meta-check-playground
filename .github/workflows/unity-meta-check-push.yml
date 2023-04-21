@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       # NOTE: Test no arguments for push
-      - uses: DeNA/unity-meta-check@v3.1.4
+      - uses: DeNA/unity-meta-check@v3.2.0-alpha0
 
       # NOTE: Test pr_comment for push
       - uses: jwalton/gh-find-current-pr@v1
