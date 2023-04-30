@@ -18,8 +18,9 @@ jobs:
         with:
           target_path: ./Directory
           log_level: DEBUG
+          ignored_file_path: .meta-check-ignore
           enable_pr_comment: true
-          pr_comment_lang: en
+          pr_comment_lang: ja
           pr_comment_send_success: true
           pr_comment_pull_number: ${{ steps.findPr.outputs.number }}
         env:
