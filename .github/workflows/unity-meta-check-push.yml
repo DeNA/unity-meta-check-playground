@@ -1,0 +1,28 @@
+name: unity-meta-check-push
+on: push
+
+jobs:
+  unity-meta-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # NOTE: Test no arguments for push
+      - uses: DeNA/unity-meta-check@v3.2.1-alpha3
+
+      # NOTE: Test pr_comment for push
+      - uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+        if: always()
+
+      - uses: DeNA/unity-meta-check@v3.2.1-alpha3
+        with:
+          target_path: ./Directory
+          log_level: DEBUG
+          ignored_file_path: .meta-check-ignore
+          enable_pr_comment: true
+          pr_comment_lang: ja
+          pr_comment_send_success: true
+          pr_comment_pull_number: ${{ steps.findPr.outputs.number }}
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        if: always()

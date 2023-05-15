@@ -1,0 +1,36 @@
+name: unity-meta-check-pr
+on: pull_request
+
+jobs:
+  unity-meta-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # NOTE: Test no arguments for pull_request
+      - uses: DeNA/unity-meta-check@v3.2.1-alpha3
+
+      # NOTE: Test full features
+      - uses: DeNA/unity-meta-check@v3.2.1-alpha3
+        with:
+          target_path: ./Directory
+          log_level: DEBUG
+          ignored_file_path: .meta-check-ignore
+          enable_autofix: true
+          autofix_globs: .
+          enable_junit: true
+          junit_xml_path: junit.xml
+          enable_pr_comment: true
+          pr_comment_lang: en
+          pr_comment_send_success: true
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        if: always()
+
+      - name: See how autofix did
+        run: git status
+        if: always()
+
+      - uses: mikepenz/action-junit-report@v2
+        with:
+          report_paths: junit.xml
+        if: always()
